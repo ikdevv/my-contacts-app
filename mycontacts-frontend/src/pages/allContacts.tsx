@@ -14,11 +14,13 @@ const AllContacts = () => {
       }
     }
     fetchContacts();
-  }, []);
+  }, [contacts]);
 
   return (
     <div>
-      <ContactCard contacts={contacts} />
+      {contacts.map((contact) => (
+        <ContactCard key={contact._id} contact={contact} />
+      ))}
     </div>
   );
 };

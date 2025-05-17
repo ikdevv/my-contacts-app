@@ -1,12 +1,12 @@
 export interface Contact {
-  id: string;
+  _id: string;
   email: string;
   name: string;
   phone: string;
 }
 
 export interface Image {
-  id: string;
+  _id: string;
   url: string;
   name: string;
 }

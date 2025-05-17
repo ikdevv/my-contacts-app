@@ -1,27 +1,39 @@
 import React from "react";
 import type { Contact } from "../types";
+import { Avatar, Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 interface ContactCardProps {
-  contacts: Contact[];
+  contact: Contact;
 }
 
-const ContactCard: React.FC<ContactCardProps> = ({ contacts }) => {
+const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
   return (
-    <div className="grid gap-6">
-      {contacts.map((contact) => (
-        <div
-          className="p-6 bg-gray-500 rounded-lg shadow hover:shadow-lg transition-shadow duration-200"
-          key={contact.id}
-        >
-          <h2 className="text-2xl font-semibold text-gray-800">
+    <Box
+      p={3}
+      bg="pink.400"
+      borderRadius="lg"
+      boxShadow="md"
+      _hover={{ boxShadow: "lg" }}
+      transition="box-shadow 0.2s"
+      key={contact._id}
+      marginBottom={2}
+    >
+      <Flex alignItems={"center"}>
+        <Avatar.Root shape="full" size="xl">
+          <Avatar.Fallback name="Random User" />
+          <Avatar.Image src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04" />
+        </Avatar.Root>
+
+        <Flex direction="column" ml={2}>
+          <Heading as="h2" size="md" color="gray.800">
             {contact.name}
-          </h2>
-          <div className="flex items-center justify-between">
+          </Heading>
+          <Text>
             {contact.email} - {contact.phone}
-          </div>
-        </div>
-      ))}
-    </div>
+          </Text>
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
 
